@@ -794,6 +794,48 @@ static int gdb_input(int key)
         case CGDB_KEY_NPAGE:
             scr_down(gdb_win, get_gdb_height() - 1);
             break;
+        case CGDB_KEY_F5:
+            /* Issue GDB run command */
+            {
+                tgdb_request_ptr request_ptr;
+                request_ptr = tgdb_request_run_debugger_command (tgdb, TGDB_RUN);
+                handle_request (tgdb, request_ptr);
+            }
+            break;
+        case CGDB_KEY_F6:
+            /* Issue GDB continue command */
+            {
+                tgdb_request_ptr request_ptr;
+                request_ptr =
+                    tgdb_request_run_debugger_command (tgdb, TGDB_CONTINUE);
+                handle_request (tgdb, request_ptr);
+            }
+            break;
+        case CGDB_KEY_F7:
+            /* Issue GDB finish command */
+            {
+                tgdb_request_ptr request_ptr;
+                request_ptr =
+                    tgdb_request_run_debugger_command (tgdb, TGDB_FINISH);
+                handle_request (tgdb, request_ptr);
+            }
+            break;
+        case CGDB_KEY_F8:
+            /* Issue GDB next command */
+            {
+                tgdb_request_ptr request_ptr;
+                request_ptr = tgdb_request_run_debugger_command (tgdb, TGDB_NEXT);
+                handle_request (tgdb, request_ptr);
+            }
+            break;
+        case CGDB_KEY_F10:
+            /* Issue GDB step command */
+            {
+                tgdb_request_ptr request_ptr;
+                request_ptr = tgdb_request_run_debugger_command (tgdb, TGDB_STEP);
+                handle_request (tgdb, request_ptr);
+            }
+            break;
         case CGDB_KEY_F11:
             scr_home(gdb_win);
             break;
