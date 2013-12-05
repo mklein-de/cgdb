@@ -114,7 +114,9 @@ enum cgdbrc_option_kind {
     CGDBRC_TTIMEOUT_LEN,
     CGDBRC_WINMINHEIGHT,
     CGDBRC_WINSPLIT,
-    CGDBRC_WRAPSCAN
+    CGDBRC_WRAPSCAN,
+    CGDBRC_GDBISDUMB,
+    CGDBRC_LAST
 };
 
 /** This represents a single configuration option. */
@@ -134,6 +136,7 @@ struct cgdbrc_config_option {
         /* option_kind == CGDBRC_TTIMEOUTLEN */
         /* option_kind == CGDBRC_WINMINHEIGHT */
         /* option_kind == CGDBRC_WRAPSCAN */
+        /* option_kind == CGDBRC_GDBISDUMB */
         int int_val;
         /* option_kind == CGDBRC_SYNTAX */
         enum tokenizer_language_support language_support_val;

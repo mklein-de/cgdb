@@ -60,7 +60,7 @@ static int cgdbrc_set_val(struct cgdbrc_config_option config_option);
  * This data structure stores all the values of all the config options.
  * It is initialized with the default values.
  */
-static struct cgdbrc_config_option cgdbrc_config_options[CGDBRC_WRAPSCAN + 1] = {
+static struct cgdbrc_config_option cgdbrc_config_options[CGDBRC_LAST] = {
     {CGDBRC_ARROWSTYLE, {ARROWSTYLE_SHORT}},
     {CGDBRC_AUTOSOURCERELOAD, {1}},
     {CGDBRC_CGDB_MODE_KEY, {CGDB_KEY_ESC}},
@@ -74,7 +74,8 @@ static struct cgdbrc_config_option cgdbrc_config_options[CGDBRC_WRAPSCAN + 1] = 
     {CGDBRC_TTIMEOUT_LEN, {100}},
     {CGDBRC_WINMINHEIGHT, {0}},
     {CGDBRC_WINSPLIT, {WIN_SPLIT_EVEN}},
-    {CGDBRC_WRAPSCAN, {1}}
+    {CGDBRC_WRAPSCAN, {1}},
+    {CGDBRC_GDBISDUMB, {1}}
 };
 
 static struct std_list *cgdbrc_attach_list;
@@ -138,8 +139,12 @@ static struct ConfigVariable {
     "winsplit", "winsplit", CONFIG_TYPE_FUNC_STRING, command_set_winsplit},
             /* wrapscan */
     {
-"wrapscan", "ws", CONFIG_TYPE_BOOL,
-                &cgdbrc_config_options[CGDBRC_WRAPSCAN].variant.int_val},};
+    "wrapscan", "ws", CONFIG_TYPE_BOOL,
+                &cgdbrc_config_options[CGDBRC_WRAPSCAN].variant.int_val},
+    {
+    "gdbisdumb", "gdbisdumb", CONFIG_TYPE_BOOL,
+                &cgdbrc_config_options[CGDBRC_GDBISDUMB].variant.int_val}
+};
 
 static int command_do_tgdbcommand(int param);
 

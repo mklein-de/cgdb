@@ -1039,10 +1039,17 @@ toggle_breakpoint(struct sviewer *sview, enum tgdb_breakpoint_action t)
 
     line = sview->cur->sel_line;
 
-    /* Get filename (strip path off -- GDB is dumb) */
-    path = strrchr(sview->cur->path, '/') + 1;
-    if (path == NULL + 1)
+    if (cgdbrc_get(CGDBRC_GDBISDUMB)->variant.int_val)
+    {
+        /* Get filename (strip path off -- GDB is dumb) */
+
+        path = strrchr(sview->cur->path, '/') + 1;
+        if (path == NULL + 1)
+            path = sview->cur->path;
+    } else
+    {
         path = sview->cur->path;
+    }
 
     /* delete an existing breakpoint */
     if (sview->cur->buf.breakpts[line])
